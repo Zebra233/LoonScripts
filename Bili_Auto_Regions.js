@@ -62,10 +62,10 @@ ip-cidr, 203.107.1.1/24, reject
 Loon 远程脚本配置 :
 ****************************
 [Script]
-http-response ^https:\/\/ap(p|i)\.bilibili\.com\/(pgc\/view\/(v\d\/)?app|x(\/v\d)?\/view\/video)\/(season|online)\?access_key script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Bili_Auto_Regions.js, requires-body=true, tag=bili自动地区
+http-response ^https:\/\/ap(p|i)\.bilibili\.com\/(pgc\/view\/(v\d\/)?app|x(\/v\d)?\/view\/video)\/(season|online)\?access_key script-path=https://raw.githubusercontent.com/Zebra233/LoonScripts/main/Bili_Auto_Regions.js, requires-body=true, tag=bili自动地区
 
 #可选, 适用于搜索指定地区的番剧
-http-request ^https:\/\/app\.bilibili\.com\/x\/v\d\/search(\/type)?\?.+?%20(%E6%B8%AF|%E5%8F%B0|%E4%B8%AD)& script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Bili_Auto_Regions.js, requires-body=true, tag=bili自动地区(搜索)
+http-request ^https:\/\/app\.bilibili\.com\/x\/v\d\/search(\/type)?\?.+?%20(%E6%B8%AF|%E5%8F%B0|%E4%B8%AD)& script-path=https://raw.githubusercontent.com/Zebra233/LoonScripts/main/Bili_Auto_Regions.js, requires-body=true, tag=bili自动地区(搜索)
 
 [Mitm]
 hostname = ap?.bilibili.com
@@ -76,10 +76,10 @@ let $ = nobyda();
 let run = EnvInfo();
 
 async function SwitchRegion(play) {
-    const Group = $.read('BiliArea_Policy') || '📺 DomesticMedia'; //Your blibli policy group name.
+    const Group = $.read('BiliArea_Policy') || '📺  哔哩哔哩'; //Your blibli policy group name.
     const CN = $.read('BiliArea_CN') || 'DIRECT'; //Your China sub-policy name.
-    const TW = $.read('BiliArea_TW') || '🇹🇼 sub-policy'; //Your Taiwan sub-policy name.
-    const HK = $.read('BiliArea_HK') || '🇭🇰 sub-policy'; //Your HongKong sub-policy name.
+    const TW = $.read('BiliArea_TW') || '🇹🇼  台湾节点'; //Your Taiwan sub-policy name.
+    const HK = $.read('BiliArea_HK') || '🇭🇰  香港节点'; //Your HongKong sub-policy name.
     const current = await $.getPolicy(Group);
     const area = (() => {
         if (/\u50c5[\u4e00-\u9fa5]+\u6e2f|%20%E6%B8%AF&/.test(play)) {
