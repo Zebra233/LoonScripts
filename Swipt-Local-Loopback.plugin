@@ -1,0 +1,9 @@
+#!name=Swipt Local Loopback
+#!desc=为 Swipt 提供 10.7.0.1 本地环回路由（需 Loon Build 1007+）
+#!system=iOS,iPadOS
+
+[General]
+include-tun = 10.7.0.1/32
+
+[IP Rewrite]
+10.7.0.1 = reflect
